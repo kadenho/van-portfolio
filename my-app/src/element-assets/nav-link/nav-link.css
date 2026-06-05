@@ -1,0 +1,20 @@
+.nav-link {
+  color: var(--dark-text);
+  font-family: var(--sans);
+  font-weight: 500;
+  text-decoration: none;
+  position: relative;
+  padding: 4px 8px;
+  border-radius: 6px;
+  box-sizing: border-box;
+}
+
+.nav-link.active {
+  background: rgba(0, 0, 0, 0.08);
+  border-bottom: 5px solid var(--accent);
+    box-sizing: border-box;
+}
+
+.nav-link:hover {
+  background: rgba(0, 0, 0, 0.04);
+}

@@ -1,10 +1,12 @@
 import { useState } from 'react'
 import { useReveal } from '../../useReveal'
+import { NavLink } from 'react-router-dom'
 import Modal from '../../element-assets/modal/modal'
 import Banner from './assets/home-banner.jpg'
 import IntroductionImage from './assets/intro-picture.png'
 import { getProjects } from '../../getProjects'
 import '../../reveal.css'
+import '../../element-assets/nav-link/nav-link.css'
 import '../../element-assets/modal-panels/modal-panels.css'
 import './home.css'
 
@@ -28,14 +30,16 @@ export default function Home() {
         </p>
       </section>
 
-
-      <h1>Recent Work</h1>
-      <section id="modal-panels" className="modal-panels">
-        {projects.map(p => (
-          <button key={p.id} className="modal-panel" onClick={() => setActiveProject(p)}>
-            <img src={p.cover} alt={p.title} className="modal-panel-image" draggable={false} />
-          </button>
-        ))}
+      <section id="recent-work" class="recent-work">
+        <h1>Recent Work</h1>
+        <section id="modal-panels" className="modal-panels">
+          {projects.map(p => (
+            <button key={p.id} className="modal-panel" onClick={() => setActiveProject(p)}>
+              <img src={p.cover} alt={p.title} className="modal-panel-image" draggable={false} />
+            </button>
+          ))}
+        </section>
+        <NavLink to="/portfolio" className="nav-link">View All Projects</NavLink>
       </section>
 
       <Modal project={activeProject} onClose={() => setActiveProject(null)} />

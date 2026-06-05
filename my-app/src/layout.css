@@ -28,21 +28,6 @@
   gap: 32px;
 }
 
-.header .nav-links .nav-link {
-  color: var(--dark-text);
-  font-family: var(--sans);
-  font-weight: 500;
-  text-decoration: none;
-  position: relative;
-  padding: 4px 8px;
-  border-radius: 6px;
-}
-
-.header .nav-links .nav-link.active {
-  background: rgba(0, 0, 0, 0.08);
-  box-sizing: border-box;
-  border-bottom: 5px solid var(--accent);
-}
 
 .header .hamburger {
   display: none;

@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import Logo from './assets/logo.png'
+import './element-assets/nav-link/nav-link.css'
 import './layout.css'
 import InstagramLogo from './assets/instagram-logo.svg'
 import TikTokLogo from './assets/tiktok-logo.svg'
