@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import './portfolio.css'
 
 const covers    = import.meta.glob('./assets/*/cover.png', { eager: true })
@@ -21,15 +22,25 @@ const projects = Object.entries(covers).map(([path, module]) => {
 }).sort((a, b) => a.date.localeCompare(b.date))
 
 export default function Portfolio() {
+  const [activeProject, setActiveProject] = useState(null)
+
   return (
     <main className="page-content">
       <section id="modal-panels" className="modal-panels">
         {projects.map(p => (
-          <button key={p.id} id={`${p.id}-modal`} className="modal-panel">
+          <button key={p.id} className="modal-panel" onClick={() => setActiveProject(p)}>
             <img src={p.cover} alt={p.title} className="modal-panel-image" draggable={false} />
           </button>
         ))}
       </section>
+
+      {activeProject && (
+        <div className="modal-overlay" onClick={() => setActiveProject(null)}>
+          <dialog open className="modal" onClick={e => e.stopPropagation()}>
+            <p>{activeProject.title}</p>
+          </dialog>
+        </div>
+      )}
     </main>
   )
 }
