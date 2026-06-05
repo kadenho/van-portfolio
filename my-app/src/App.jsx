@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import Logo from './assets/logo.png'
+import Banner from './assets/home-banner.jpg'
 import './App.css'
 
 function App() {
@@ -20,7 +21,7 @@ function App() {
     <>
       <section id="header" className="header">
         <a href="#home" className="logo-link">
-          <img src={Logo} alt="Logo" className="logo" />
+          <img src={Logo} alt="Logo" className="logo" draggable={false} />
         </a>
         <button
           className="hamburger"
@@ -32,12 +33,13 @@ function App() {
         </button>
         <nav className={`nav-links${menuOpen ? ' open' : ''}`}>
           <a href="#home" className="nav-link" onClick={() => setMenuOpen(false)}>Home</a>
+          <a href="#projects" className="nav-link" onClick={() => setMenuOpen(false)}>Portfolio</a>
+          <a href="#resume" className="nav-link" onClick={() => setMenuOpen(false)}>CV</a>
           <a href="#about" className="nav-link" onClick={() => setMenuOpen(false)}>About</a>
-          <a href="#projects" className="nav-link" onClick={() => setMenuOpen(false)}>Projects</a>
           <a href="#contact" className="nav-link" onClick={() => setMenuOpen(false)}>Contact</a>
-          <a href="#resume" className="nav-link" onClick={() => setMenuOpen(false)}>Resume</a>
         </nav>
       </section>
+      <img src={Banner} alt="Banner" className="banner" draggable={false} />
     </>
   )
 }
