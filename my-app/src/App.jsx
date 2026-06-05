@@ -1,9 +1,20 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Logo from './assets/logo.png'
 import './App.css'
 
 function App() {
   const [menuOpen, setMenuOpen] = useState(false)
+
+  useEffect(() => {
+    let timer
+    const onResize = () => {
+      document.body.classList.add('no-transition')
+      clearTimeout(timer)
+      timer = setTimeout(() => document.body.classList.remove('no-transition'), 200)
+    }
+    window.addEventListener('resize', onResize)
+    return () => window.removeEventListener('resize', onResize)
+  }, [])
 
   return (
     <>
@@ -13,7 +24,7 @@ function App() {
         </a>
         <button
           className="hamburger"
-          onClick={() => setMenuOpen(o => !o)}
+          onClick={() => setMenuOpen(menuOpen => !menuOpen)}
           aria-label="Toggle menu"
           aria-expanded={menuOpen}
         >

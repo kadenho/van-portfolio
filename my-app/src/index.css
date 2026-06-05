@@ -55,6 +55,10 @@ body {
   margin: 0;
 }
 
+body.no-transition * {
+  transition: none !important;
+}
+
 #root {
   width: 100%;
   min-height: 100svh;
@@ -169,21 +173,26 @@ code {
   }
 
   .header .nav-links {
-    display: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
     position: absolute;
     top: 10vh;
     left: 0;
     right: 0;
-    flex-direction: column;
-    gap: 0;
-    background: var(--bg);
+    background: var(--secondary-bg);
     border-bottom: 1px solid var(--border);
     z-index: 999;
+    opacity: 0;
+    transform: translateY(-8px);
+    pointer-events: none;
+    transition: opacity 0.2s ease, transform 0.2s ease;
   }
 
   .header .nav-links.open {
-    display: flex;
-    background: var(--secondary-bg);
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
   }
 
   .header .nav-links .nav-link {
