@@ -8,7 +8,7 @@ export function useReveal(triggerAt = 1.1) {
       const { top, height } = el.getBoundingClientRect()
       const progress = Math.min(1, Math.max(0, (window.innerHeight - top) / (height * triggerAt)))
       el.style.opacity = progress
-      el.style.transform = `translateY(${(1 - progress) * 120}px)`
+      el.style.transform = `translateY(${(1 - progress) * 90}px)`
     }
     window.addEventListener('scroll', onScroll, { passive: true })
     onScroll()

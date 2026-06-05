@@ -202,7 +202,7 @@ code {
 
 .reveal {
   opacity: 0;
-  transform: translateY(120px);
+  transform: translateY(90px);
 }
 
 .introduction {
