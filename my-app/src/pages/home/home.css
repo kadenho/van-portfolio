@@ -25,6 +25,9 @@
 }
 
 .introduction .introduction-text {
+  color: var(--dark-text);
+  font-family: var(--serif);
+  font-size: 20px;
   width: 30%;
   text-align: center;
   align-content: center;

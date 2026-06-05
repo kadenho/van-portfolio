@@ -28,6 +28,7 @@ export default function Portfolio() {
 
   return (
     <main className="page-content">
+      <h1>Portfolio</h1>
       <section id="modal-panels" className="modal-panels">
         {projects.map(p => (
           <button key={p.id} className="modal-panel" onClick={() => setActiveProject(p)}>
