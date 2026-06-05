@@ -12,6 +12,7 @@
     rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
 
   --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
+  --serif: 'Libre Baskerville';
   --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
   --mono: ui-monospace, Consolas, monospace;
 
@@ -129,7 +130,7 @@ code {
   height: 100%;
 }
 
-.header .logo {
+.header .logo-link .logo {
   object-fit: contain;
   aspect-ratio: 1/1;
   height: 100%;
@@ -142,10 +143,11 @@ code {
 
 .header .nav-links .nav-link {
   color: var(--text);
-  text-decoration: none;
-  font-weight: 500;
-  position: relative;
   font-family: var(--sans);
+  font-weight: 500;
+  text-decoration: none;
+  position: relative;
+  
 }
 
 .header .hamburger {
@@ -173,6 +175,29 @@ code {
   object-fit: cover;
 }
 
+.footer {
+  height: 10vh;
+  display: flex;
+  background: var(--secondary-bg);
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 25px 0 25px;
+}
+
+.footer .social-links {
+  display: flex;
+  align-items: center;
+  height: 32px;
+  aspect-ratio: 1/1;
+  display: flex;
+  gap: 16px;
+}
+
+.footer .social-links .social-icon {
+  object-fit: contain;
+  width: 32px;
+  height: 32px;
+}
 
 @media (max-width: 600px) {
   .header .hamburger {
@@ -210,4 +235,5 @@ code {
   .banner {
     height: 40vh;
   }
+
 }
