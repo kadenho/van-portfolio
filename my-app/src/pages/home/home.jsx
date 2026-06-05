@@ -10,10 +10,11 @@ import '../../element-assets/nav-link/nav-link.css'
 import '../../element-assets/modal-panels/modal-panels.css'
 import './home.css'
 
-const projects = getProjects().slice(-3);
+const projects = getProjects().slice(0, 3);
 
 export default function Home() {
   const introRef = useReveal();
+  const recentWorkRef = useReveal();
   const [activeProject, setActiveProject] = useState(null);
 
   return (
@@ -30,7 +31,7 @@ export default function Home() {
         </p>
       </section>
 
-      <section id="recent-work" class="recent-work">
+      <section id="recent-work" className="recent-work" ref={recentWorkRef}>
         <h1>Recent Work</h1>
         <section id="modal-panels" className="modal-panels">
           {projects.map(p => (
