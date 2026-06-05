@@ -1,25 +1,23 @@
-import VAI1Cover from './assets/via-1/cover.png';
-import ZodiakCover from './assets/zodiak/cover.png';
-import BlueBellValleyCover from './assets/bluebell-valley/cover.png';
-import LunCover from './assets/lun/cover.png';
 import './portfolio.css'
+
+const covers = import.meta.glob('./assets/*/cover.png', { eager: true })
+const metas  = import.meta.glob('./assets/*/meta.json', { eager: true })
+
+const projects = Object.entries(covers).map(([path, module]) => {
+  const id = path.split('/')[2]
+  const meta = metas[`./assets/${id}/meta.json`]?.default ?? {}
+  return { id, cover: module.default, alt: meta.title ?? id, date: meta.date ?? '' }
+}).sort((a, b) => a.date.localeCompare(b.date))
 
 export default function Portfolio() {
   return (
     <main className="page-content">
       <section id="modal-panels" className="modal-panels">
-        <button id="via-1-modal" class="modal-panel">
-          <img src={VAI1Cover} alt="VIA-1 poster" class="modal-panel-image" draggable={false}></img>
-        </button>
-        <button id="zodiak-modal" class="modal-panel">
-          <img src={ZodiakCover} alt="Zodiak circle" class="modal-panel-image" draggable={false}></img>
-        </button>
-        <button id="bluebell-valley-modal" class="modal-panel">
-          <img src={BlueBellValleyCover} alt="Blue Bell Valley poster" class="modal-panel-image" draggable={false}></img>
-        </button>
-        <button id="lun-modal" class="modal-panel">
-          <img src={LunCover} alt="Lun poster" class="modal-panel-image" draggable={false}></img>
-        </button>
+        {projects.map(p => (
+          <button key={p.id} id={`${p.id}-modal`} className="modal-panel">
+            <img src={p.cover} alt={p.alt} className="modal-panel-image" draggable={false} />
+          </button>
+        ))}
       </section>
     </main>
   )
