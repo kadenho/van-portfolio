@@ -1,6 +1,6 @@
 import { useReveal } from '../../useReveal'
-import Banner from '../../assets/home-banner.jpg'
-import IntroductionImage from '../../assets/intro-picture.png'
+import Banner from './assets/home-banner.jpg'
+import IntroductionImage from './assets/intro-picture.png'
 import '../../reveal.css'
 import './home.css'
 
