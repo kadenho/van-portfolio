@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import Modal from '../../element-assets/modal/modal'
 import './portfolio.css'
 
 const covers    = import.meta.glob('./assets/*/cover.png', { eager: true })
@@ -34,13 +35,7 @@ export default function Portfolio() {
         ))}
       </section>
 
-      {activeProject && (
-        <div className="modal-overlay" onClick={() => setActiveProject(null)}>
-          <dialog open className="modal" onClick={e => e.stopPropagation()}>
-            <p>{activeProject.title}</p>
-          </dialog>
-        </div>
-      )}
+      <Modal project={activeProject} onClose={() => setActiveProject(null)} />
     </main>
   )
 }
