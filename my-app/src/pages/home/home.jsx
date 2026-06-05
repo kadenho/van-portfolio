@@ -1,6 +1,8 @@
-import { useReveal } from '../useReveal'
-import Banner from '../assets/home-banner.jpg'
-import IntroductionImage from '../assets/intro-picture.png'
+import { useReveal } from '../../useReveal'
+import Banner from '../../assets/home-banner.jpg'
+import IntroductionImage from '../../assets/intro-picture.png'
+import '../../reveal.css'
+import './home.css'
 
 export default function Home() {
   const introRef = useReveal()

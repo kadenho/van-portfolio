@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import Logo from './assets/logo.png'
+import './layout.css'
 import InstagramLogo from './assets/instagram-logo.svg'
 import TikTokLogo from './assets/tiktok-logo.svg'
 import BehanceLogo from './assets/behance-logo.svg'
@@ -39,7 +40,6 @@ export default function Layout({ children }) {
           <Link to="/portfolio" className="nav-link" onClick={() => setMenuOpen(false)}>Portfolio</Link>
           <Link to="/cv" className="nav-link" onClick={() => setMenuOpen(false)}>CV</Link>
           <Link to="/about" className="nav-link" onClick={() => setMenuOpen(false)}>About</Link>
-          <Link to="/contact" className="nav-link" onClick={() => setMenuOpen(false)}>Contact</Link>
         </nav>
       </section>
 

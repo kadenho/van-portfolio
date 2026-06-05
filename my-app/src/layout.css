@@ -1,0 +1,113 @@
+.header {
+  z-index: 1000;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  background: var(--secondary-bg);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 10vh;
+  padding: 0 25px 0 10px;
+}
+
+.header .logo-link {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.header .logo-link .logo {
+  object-fit: contain;
+  aspect-ratio: 1/1;
+  height: 100%;
+}
+
+.header .nav-links {
+  display: flex;
+  gap: 32px;
+}
+
+.header .nav-links .nav-link {
+  color: var(--dark-text);
+  font-family: var(--sans);
+  font-weight: 500;
+  text-decoration: none;
+  position: relative;
+}
+
+.header .hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.header .hamburger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--text-h);
+  border-radius: 2px;
+}
+
+.footer {
+  height: 8vh;
+  display: flex;
+  background: var(--secondary-bg);
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 25px;
+  margin-top: auto;
+}
+
+.footer .social-links {
+  display: flex;
+  align-items: center;
+  height: 32px;
+  gap: 16px;
+}
+
+.footer .social-links .social-icon {
+  object-fit: contain;
+  width: 32px;
+  height: 32px;
+}
+
+@media (max-width: 900px) {
+  .header .hamburger {
+    display: flex;
+  }
+
+  .header .nav-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    position: absolute;
+    top: 10vh;
+    left: 0;
+    right: 0;
+    background: var(--secondary-bg);
+    border-bottom: 1px solid var(--border);
+    z-index: 999;
+    opacity: 0;
+    transform: translateY(-8px);
+    pointer-events: none;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+  }
+
+  .header .nav-links.open {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
+  .header .nav-links .nav-link {
+    padding: 16px 2vw;
+    border-top: 1px solid var(--border);
+  }
+}
