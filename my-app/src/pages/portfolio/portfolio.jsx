@@ -1,12 +1,23 @@
 import './portfolio.css'
 
-const covers = import.meta.glob('./assets/*/cover.png', { eager: true })
-const metas  = import.meta.glob('./assets/*/meta.json', { eager: true })
+const covers    = import.meta.glob('./assets/*/cover.png', { eager: true })
+const metas     = import.meta.glob('./assets/*/meta.json', { eager: true })
+const allImages = import.meta.glob('./assets/*/*.{png,jpg,jpeg,webp,svg}', { eager: true })
 
 const projects = Object.entries(covers).map(([path, module]) => {
   const id = path.split('/')[2]
   const meta = metas[`./assets/${id}/meta.json`]?.default ?? {}
-  return { id, cover: module.default, alt: meta.title ?? id, date: meta.date ?? '' }
+  const images = Object.entries(allImages)
+    .filter(([p]) => p.startsWith(`./assets/${id}/`) && !p.endsWith('cover.png'))
+    .map(([, m]) => m.default)
+  return {
+    id,
+    cover: module.default,
+    title: meta.title ?? id,
+    date: meta.date ?? '',
+    caption: meta.caption ?? '',
+    images,
+  }
 }).sort((a, b) => a.date.localeCompare(b.date))
 
 export default function Portfolio() {
@@ -15,7 +26,7 @@ export default function Portfolio() {
       <section id="modal-panels" className="modal-panels">
         {projects.map(p => (
           <button key={p.id} id={`${p.id}-modal`} className="modal-panel">
-            <img src={p.cover} alt={p.alt} className="modal-panel-image" draggable={false} />
+            <img src={p.cover} alt={p.title} className="modal-panel-image" draggable={false} />
           </button>
         ))}
       </section>
