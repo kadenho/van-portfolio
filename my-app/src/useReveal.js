@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react'
 
-export function useReveal(triggerAt = 1.1) {
+export function useReveal(triggerAt = 0.7) {
   const ref = useRef(null)
   useEffect(() => {
     const el = ref.current
