@@ -1,14 +1,17 @@
 import { useState, useEffect } from 'react'
+import { useReveal } from './useReveal'
 import Logo from './assets/logo.png'
 import Banner from './assets/home-banner.jpg'
 import InstagramLogo from './assets/instagram-logo.svg'
 import TikTokLogo from './assets/tiktok-logo.svg'
 import BehanceLogo from './assets/behance-logo.svg'
 import LinkedInLogo from './assets/linkedin-logo.svg'
+import IntroductionImage from './assets/intro-picture.png'
 import './App.css'
 
 function App() {
   const [menuOpen, setMenuOpen] = useState(false)
+  const introRef = useReveal()
 
   useEffect(() => {
     let timer
@@ -45,6 +48,17 @@ function App() {
       </section>
 
       <img src={Banner} alt="Banner" className="banner" draggable={false} />
+
+      <section id="introduction" className="introduction reveal" ref={introRef}>
+        <img src={IntroductionImage} alt="Introduction" className="introduction-image" draggable={false} />
+
+        <p className="introduction-text">
+          Van is a multi-disciplinary designer
+          who dreams of unifying her love for
+          traditional art and graphic design to
+          inspire audiences all over the world.
+        </p>
+      </section>
 
       <footer className="footer">
         <span>&copy; Van Phan 2026</span>
