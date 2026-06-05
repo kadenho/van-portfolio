@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import Logo from './assets/logo.png'
 import './layout.css'
 import InstagramLogo from './assets/instagram-logo.svg'
@@ -36,10 +36,10 @@ export default function Layout({ children }) {
           <span /><span /><span />
         </button>
         <nav className={`nav-links${menuOpen ? ' open' : ''}`}>
-          <Link to="/" className="nav-link" onClick={() => setMenuOpen(false)}>Home</Link>
-          <Link to="/portfolio" className="nav-link" onClick={() => setMenuOpen(false)}>Portfolio</Link>
-          <Link to="/cv" className="nav-link" onClick={() => setMenuOpen(false)}>CV</Link>
-          <Link to="/about" className="nav-link" onClick={() => setMenuOpen(false)}>About</Link>
+          <NavLink to="/" end className="nav-link" onClick={() => setMenuOpen(false)}>Home</NavLink>
+          <NavLink to="/portfolio" className="nav-link" onClick={() => setMenuOpen(false)}>Portfolio</NavLink>
+          <NavLink to="/cv" className="nav-link" onClick={() => setMenuOpen(false)}>CV</NavLink>
+          <NavLink to="/about" className="nav-link" onClick={() => setMenuOpen(false)}>About</NavLink>
         </nav>
       </section>
 

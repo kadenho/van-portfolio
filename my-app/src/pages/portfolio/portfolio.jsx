@@ -2,15 +2,15 @@ import { useState } from 'react'
 import Modal from '../../element-assets/modal/modal'
 import './portfolio.css'
 
-const covers    = import.meta.glob('./assets/*/cover.png', { eager: true })
-const metas     = import.meta.glob('./assets/*/meta.json', { eager: true })
-const allImages = import.meta.glob('./assets/*/*.{png,jpg,jpeg,webp,svg}', { eager: true })
+const covers    = import.meta.glob('./projects/*/cover.png', { eager: true })
+const metas     = import.meta.glob('./projects/*/meta.json', { eager: true })
+const allImages = import.meta.glob('./projects/*/*.{png,jpg,jpeg,webp,svg}', { eager: true })
 
 const projects = Object.entries(covers).map(([path, module]) => {
   const id = path.split('/')[2]
-  const meta = metas[`./assets/${id}/meta.json`]?.default ?? {}
+  const meta = metas[`./projects/${id}/meta.json`]?.default ?? {}
   const images = Object.entries(allImages)
-    .filter(([p]) => p.startsWith(`./assets/${id}/`) && !p.endsWith('cover.png'))
+    .filter(([p]) => p.startsWith(`./projects/${id}/`) && !p.endsWith('cover.png'))
     .sort(([a], [b]) => a.localeCompare(b))
     .map(([, m]) => m.default)
   return {
