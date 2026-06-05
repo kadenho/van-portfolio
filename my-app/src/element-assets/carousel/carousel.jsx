@@ -2,59 +2,60 @@ import { useState } from 'react';
 import './carousel.css';
 
 const Carousel = ({ slides }) => {
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [index, setIndex] = useState(1);
+  const [animated, setAnimated] = useState(true);
 
-  const prevSlide = () => {
-    // If we are at the first slide, wrap around to the last slide
-    const isFirstSlide = currentIndex === 0;
-    const newIndex = isFirstSlide ? slides.length - 1 : currentIndex - 1;
-    setCurrentIndex(newIndex);
+  if (!Array.isArray(slides) || slides.length === 0) return null;
+
+  const loop = [slides[slides.length - 1], ...slides, slides[0]];
+
+  const snapTo = (i) => {
+    setAnimated(false);
+    setIndex(i);
+    requestAnimationFrame(() => requestAnimationFrame(() => setAnimated(true)));
   };
 
-  const nextSlide = () => {
-    // If we are at the last slide, wrap around to the first slide
-    const isLastSlide = currentIndex === slides.length - 1;
-    const newIndex = isLastSlide ? 0 : currentIndex + 1;
-    setCurrentIndex(newIndex);
+  const onTransitionEnd = () => {
+    if (index === 0) snapTo(slides.length);
+    else if (index === loop.length - 1) snapTo(1);
   };
 
-  const goToSlide = (slideIndex) => {
-    setCurrentIndex(slideIndex);
-  };
+  const prev = () => { setAnimated(true); setIndex(i => i - 1); };
+  const next = () => { setAnimated(true); setIndex(i => i + 1); };
 
-  if (!Array.isArray(slides) || slides.length <= 0) {
-    return null;
-  }
+  const realIndex = (index - 1 + slides.length) % slides.length;
 
   return (
     <div className="carousel-container">
-      {/* Left Navigation Arrow */}
-      <button className="arrow left-arrow" onClick={prevSlide} aria-label="Previous slide">
+      <button className="arrow left-arrow" onClick={prev} aria-label="Previous slide">
         &#10094;
       </button>
-
-      {/* Right Navigation Arrow */}
-      <button className="arrow right-arrow" onClick={nextSlide} aria-label="Next slide">
+      <button className="arrow right-arrow" onClick={next} aria-label="Next slide">
         &#10095;
       </button>
 
-      {/* Slides Wrapper */}
-      <div className="carousel-slider" style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
-        {slides.map((slide, index) => (
-          <div className="carousel-slide" key={index}>
-            <img src={slide} alt={`Slide ${index + 1}`} className="slide-image" />
+      <div
+        className="carousel-slider"
+        style={{
+          transform: `translateX(-${index * 100}%)`,
+          transition: animated ? undefined : 'none',
+        }}
+        onTransitionEnd={onTransitionEnd}
+      >
+        {loop.map((slide, i) => (
+          <div className="carousel-slide" key={i}>
+            <img src={slide} alt={`Slide ${i}`} className="slide-image" />
           </div>
         ))}
       </div>
 
-      {/* Bottom Indicator Dots */}
       <div className="carousel-dots">
-        {slides.map((_, index) => (
+        {slides.map((_, i) => (
           <button
-            key={index}
-            className={`dot ${currentIndex === index ? 'active' : ''}`}
-            onClick={() => goToSlide(index)}
-            aria-label={`Go to slide ${index + 1}`}
+            key={i}
+            className={`dot ${realIndex === i ? 'active' : ''}`}
+            onClick={() => { setAnimated(true); setIndex(i + 1); }}
+            aria-label={`Go to slide ${i + 1}`}
           />
         ))}
       </div>
