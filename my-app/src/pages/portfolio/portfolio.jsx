@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import Modal from '../../element-assets/modal/modal'
 import { getProjects } from '../../getProjects'
+import '../../element-assets/modal-panels/modal-panels.css'
 import './portfolio.css'
 
 const projects = getProjects()
