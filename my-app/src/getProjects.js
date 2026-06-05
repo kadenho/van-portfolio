@@ -19,5 +19,5 @@ export function getProjects() {
             images,
         }
     }).sort((a, b) => a.date.localeCompare(b.date))
-    return projects
+    return projects.reverse()
 }
