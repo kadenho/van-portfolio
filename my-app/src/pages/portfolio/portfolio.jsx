@@ -11,6 +11,7 @@ const projects = Object.entries(covers).map(([path, module]) => {
   const meta = metas[`./assets/${id}/meta.json`]?.default ?? {}
   const images = Object.entries(allImages)
     .filter(([p]) => p.startsWith(`./assets/${id}/`) && !p.endsWith('cover.png'))
+    .sort(([a], [b]) => a.localeCompare(b))
     .map(([, m]) => m.default)
   return {
     id,
