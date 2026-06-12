@@ -42,7 +42,7 @@
 }
 
 .introduction .introduction-text {
-  color: var(--dark-text);
+  color: var(--text);
   font-family: var(--serif);
   font-size: 20px;
   width: 30%;
