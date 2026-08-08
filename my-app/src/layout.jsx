@@ -35,7 +35,6 @@ export default function Layout({ children }) {
         <nav className={`nav-links${menuOpen ? ' open' : ''}`}>
           <NavLink to="/" end className="nav-link" onClick={() => setMenuOpen(false)}>Home</NavLink>
           <NavLink to="/portfolio" className="nav-link" onClick={() => setMenuOpen(false)}>Portfolio</NavLink>
-          <NavLink to="/cv" className="nav-link" onClick={() => setMenuOpen(false)}>CV</NavLink>
           <NavLink to="/about" className="nav-link" onClick={() => setMenuOpen(false)}>About</NavLink>
         </nav>
       </section>
