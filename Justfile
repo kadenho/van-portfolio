@@ -6,3 +6,4 @@ install:
 
 lint:
     cd my-app && npm run lint
+    cd my-app && npm run format:check

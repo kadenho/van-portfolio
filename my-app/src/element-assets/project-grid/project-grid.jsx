@@ -8,7 +8,7 @@ export default function ProjectGrid({ projects, id = 'modal-panels' }) {
   return (
     <>
       <section id={id} className="modal-panels">
-        {projects.map(p => (
+        {projects.map((p) => (
           <button key={p.id} className="modal-panel" onClick={() => setActiveProject(p)}>
             <img src={p.cover} alt={p.title} className="modal-panel-image" draggable={false} />
           </button>

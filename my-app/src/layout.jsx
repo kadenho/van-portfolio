@@ -41,15 +41,23 @@ export default function Layout({ children }) {
         </Link>
         <button
           className="hamburger"
-          onClick={() => setMenuOpen(o => !o)}
+          onClick={() => setMenuOpen((o) => !o)}
           aria-label="Toggle menu"
           aria-expanded={menuOpen}
         >
-          <span /><span /><span />
+          <span />
+          <span />
+          <span />
         </button>
         <nav className={`nav-links${menuOpen ? ' open' : ''}`}>
           {NAV_ITEMS.map(({ to, label, end }) => (
-            <NavLink key={to} to={to} end={end} className="nav-link" onClick={() => setMenuOpen(false)}>
+            <NavLink
+              key={to}
+              to={to}
+              end={end}
+              className="nav-link"
+              onClick={() => setMenuOpen(false)}
+            >
               {label}
             </NavLink>
           ))}
@@ -62,7 +70,14 @@ export default function Layout({ children }) {
         <span>&copy; Van Phan 2026</span>
         <div className="social-links">
           {SOCIAL_LINKS.map(({ href, icon: Icon, title }) => (
-            <a key={href} href={href} target="_blank" rel="noopener noreferrer" className="logo-link" title={title}>
+            <a
+              key={href}
+              href={href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="logo-link"
+              title={title}
+            >
               <Icon className="social-icon" aria-label={title} />
             </a>
           ))}

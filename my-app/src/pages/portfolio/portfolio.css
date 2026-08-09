@@ -1,12 +1,12 @@
 .page-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .page-title {
-    font-size: 90px;
-    font-weight: 500;
-    font-family: var(--serif);
-    margin: 5vh;
+  font-size: 90px;
+  font-weight: 500;
+  font-family: var(--serif);
+  margin: 5vh;
 }
