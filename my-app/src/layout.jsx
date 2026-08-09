@@ -6,6 +6,19 @@ import Logo from './assets/logo.png'
 import './element-assets/nav-link/nav-link.css'
 import './layout.css'
 
+const NAV_ITEMS = [
+  { to: '/', label: 'Home', end: true },
+  { to: '/portfolio', label: 'Portfolio' },
+  { to: '/about', label: 'About' },
+]
+
+const SOCIAL_LINKS = [
+  { href: 'https://www.instagram.com/v.dreamt/', icon: SiInstagram, title: 'Instagram' },
+  { href: 'https://www.tiktok.com/@v.dreamt', icon: SiTiktok, title: 'TikTok' },
+  { href: 'https://www.behance.net/vanphan21', icon: SiBehance, title: 'Behance' },
+  { href: 'https://www.linkedin.com/in/van-phan-002b29346/', icon: FaLinkedin, title: 'LinkedIn' },
+]
+
 export default function Layout({ children }) {
   const [menuOpen, setMenuOpen] = useState(false)
 
@@ -35,9 +48,11 @@ export default function Layout({ children }) {
           <span /><span /><span />
         </button>
         <nav className={`nav-links${menuOpen ? ' open' : ''}`}>
-          <NavLink to="/" end className="nav-link" onClick={() => setMenuOpen(false)}>Home</NavLink>
-          <NavLink to="/portfolio" className="nav-link" onClick={() => setMenuOpen(false)}>Portfolio</NavLink>
-          <NavLink to="/about" className="nav-link" onClick={() => setMenuOpen(false)}>About</NavLink>
+          {NAV_ITEMS.map(({ to, label, end }) => (
+            <NavLink key={to} to={to} end={end} className="nav-link" onClick={() => setMenuOpen(false)}>
+              {label}
+            </NavLink>
+          ))}
         </nav>
       </section>
 
@@ -46,18 +61,11 @@ export default function Layout({ children }) {
       <footer className="footer">
         <span>&copy; Van Phan 2026</span>
         <div className="social-links">
-          <a href="https://www.instagram.com/v.dreamt/" target="_blank" rel="noopener noreferrer" className="logo-link" title="Instagram">
-            <SiInstagram className="social-icon" aria-label="Instagram" />
-          </a>
-          <a href="https://www.tiktok.com/@v.dreamt" target="_blank" rel="noopener noreferrer" className="logo-link" title="TikTok">
-            <SiTiktok className="social-icon" aria-label="TikTok" />
-          </a>
-          <a href="https://www.behance.net/vanphan21" target="_blank" rel="noopener noreferrer" className="logo-link" title="Behance">
-            <SiBehance className="social-icon" aria-label="Behance" />
-          </a>
-          <a href="https://www.linkedin.com/in/van-phan-002b29346/" target="_blank" rel="noopener noreferrer" className="logo-link" title="LinkedIn">
-            <FaLinkedin className="social-icon" aria-label="LinkedIn" />
-          </a>
+          {SOCIAL_LINKS.map(({ href, icon: Icon, title }) => (
+            <a key={href} href={href} target="_blank" rel="noopener noreferrer" className="logo-link" title={title}>
+              <Icon className="social-icon" aria-label={title} />
+            </a>
+          ))}
         </div>
       </footer>
     </>
