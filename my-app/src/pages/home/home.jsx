@@ -2,7 +2,7 @@ import { useReveal } from '../../useReveal'
 import { NavLink } from 'react-router-dom'
 import ProjectGrid from '../../element-assets/project-grid/project-grid'
 import Banner from './assets/home-banner.jpg'
-import IntroductionImage from './assets/intro-picture.png'
+import IntroductionImage from './assets/intro-picture.jpg'
 import { getProjects } from '../../getProjects'
 import '../../reveal.css'
 import '../../element-assets/nav-link/nav-link.css'
@@ -16,7 +16,7 @@ export default function Home() {
 
   return (
     <div className="page-content">
-      <img src={Banner} alt="Banner" className="banner" draggable={false} />
+      <img src={Banner} alt="Banner" className="banner" draggable={false} loading="eager"/>
 
       <section id="introduction" className="introduction reveal" ref={introRef}>
         <img
@@ -24,6 +24,7 @@ export default function Home() {
           alt="Introduction"
           className="introduction-image"
           draggable={false}
+          loading="eager"
         />
         <p className="introduction-text">
           Van is a multi-disciplinary designer who dreams of unifying her love for traditional art

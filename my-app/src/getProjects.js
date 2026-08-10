@@ -1,4 +1,4 @@
-const covers = import.meta.glob('./assets/projects/*/cover.png', { eager: true })
+const covers = import.meta.glob('./assets/projects/*/cover.jpg', { eager: true })
 const metas = import.meta.glob('./assets/projects/*/meta.json', { eager: true })
 const allImages = import.meta.glob('./assets/projects/*/*.{png,jpg,jpeg,webp,svg}', { eager: true })
 
@@ -8,7 +8,7 @@ export function getProjects() {
       const id = path.split('/')[3]
       const meta = metas[`./assets/projects/${id}/meta.json`]?.default ?? {}
       const images = Object.entries(allImages)
-        .filter(([p]) => p.startsWith(`./assets/projects/${id}/`) && !p.endsWith('cover.png'))
+        .filter(([p]) => p.startsWith(`./assets/projects/${id}/`) && !p.endsWith('cover.jpg'))
         .sort(([a], [b]) => a.localeCompare(b))
         .map(([, m]) => m.default)
       return {
